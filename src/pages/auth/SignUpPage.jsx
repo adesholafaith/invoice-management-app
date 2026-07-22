@@ -9,6 +9,7 @@ import { authService } from '../../services/authService'
 
 export function SignUpPage() {
   const navigate = useNavigate()
+  const [authError, setAuthError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const {
     formState: { errors },
@@ -24,6 +25,7 @@ export function SignUpPage() {
 
   async function onSubmit(values) {
     setIsSubmitting(true)
+    setAuthError('')
 
     try {
       const { error } = await authService.signUp(values)
@@ -35,6 +37,7 @@ export function SignUpPage() {
       toast.success('Account created. Check your email if confirmation is enabled.')
       navigate('/', { replace: true })
     } catch (error) {
+      setAuthError(error.message || 'Unable to create your account. Please try again.')
       toast.error(error.message || 'Unable to create your account. Please try again.')
     } finally {
       setIsSubmitting(false)
@@ -43,6 +46,7 @@ export function SignUpPage() {
 
   async function handleGoogleLogin() {
     setIsSubmitting(true)
+    setAuthError('')
 
     try {
       const { error } = await authService.signInWithGoogle()
@@ -51,6 +55,7 @@ export function SignUpPage() {
         throw error
       }
     } catch (error) {
+      setAuthError(error.message || 'Unable to continue with Google.')
       toast.error(error.message || 'Unable to continue with Google.')
       setIsSubmitting(false)
     }
@@ -73,6 +78,11 @@ export function SignUpPage() {
         or
         <span className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
       </div>
+      {authError ? (
+        <p className="rounded-md border border-[var(--rust-dim)] bg-[var(--rust-dim)] px-3 py-2 text-sm text-[var(--rust)]" role="alert">
+          {authError}
+        </p>
+      ) : null}
       <FormInput
         autoComplete="name"
         error={errors.name}

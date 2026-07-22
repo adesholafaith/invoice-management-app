@@ -9,6 +9,7 @@ import { authService } from '../../services/authService'
 
 export function LoginPage() {
   const navigate = useNavigate()
+  const [authError, setAuthError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const {
     formState: { errors },
@@ -23,6 +24,7 @@ export function LoginPage() {
 
   async function onSubmit(values) {
     setIsSubmitting(true)
+    setAuthError('')
 
     try {
       const { error } = await authService.signIn(values)
@@ -34,6 +36,7 @@ export function LoginPage() {
       toast.success('Welcome back.')
       navigate('/', { replace: true })
     } catch (error) {
+      setAuthError(error.message || 'Unable to log in. Please try again.')
       toast.error(error.message || 'Unable to log in. Please try again.')
     } finally {
       setIsSubmitting(false)
@@ -42,6 +45,7 @@ export function LoginPage() {
 
   async function handleGoogleLogin() {
     setIsSubmitting(true)
+    setAuthError('')
 
     try {
       const { error } = await authService.signInWithGoogle()
@@ -50,6 +54,7 @@ export function LoginPage() {
         throw error
       }
     } catch (error) {
+      setAuthError(error.message || 'Unable to continue with Google.')
       toast.error(error.message || 'Unable to continue with Google.')
       setIsSubmitting(false)
     }
@@ -72,6 +77,11 @@ export function LoginPage() {
         or
         <span className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
       </div>
+      {authError ? (
+        <p className="rounded-md border border-[var(--rust-dim)] bg-[var(--rust-dim)] px-3 py-2 text-sm text-[var(--rust)]" role="alert">
+          {authError}
+        </p>
+      ) : null}
       <FormInput
         autoComplete="email"
         error={errors.email}

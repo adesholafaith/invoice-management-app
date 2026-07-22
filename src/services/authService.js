@@ -23,6 +23,7 @@ export const authService = {
       password,
       options: {
         data: { name },
+        emailRedirectTo: `${window.location.origin}/dashboard`,
       },
     })
   },
