@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { FcGoogle } from 'react-icons/fc'
 import { Link, useNavigate } from 'react-router-dom'
 import { FormInput } from '../../components/forms/FormInput'
 import { Button } from '../../components/ui/Button'
@@ -43,40 +42,8 @@ export function LoginPage() {
     }
   }
 
-  async function handleGoogleLogin() {
-    setIsSubmitting(true)
-    setAuthError('')
-
-    try {
-      const { error } = await authService.signInWithGoogle()
-
-      if (error) {
-        throw error
-      }
-    } catch (error) {
-      setAuthError(error.message || 'Unable to continue with Google.')
-      toast.error(error.message || 'Unable to continue with Google.')
-      setIsSubmitting(false)
-    }
-  }
-
   return (
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-      <Button
-        className="w-full"
-        disabled={isSubmitting}
-        onClick={handleGoogleLogin}
-        type="button"
-        variant="secondary"
-      >
-        <FcGoogle aria-hidden="true" className="size-5" />
-        Continue with Google
-      </Button>
-      <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-wide text-slate-400">
-        <span className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
-        or
-        <span className="h-px flex-1 bg-slate-200 dark:bg-slate-800" />
-      </div>
       {authError ? (
         <p className="rounded-md border border-[var(--rust-dim)] bg-[var(--rust-dim)] px-3 py-2 text-sm text-[var(--rust)]" role="alert">
           {authError}

@@ -42,17 +42,6 @@ export const authService = {
     })
   },
 
-  async signInWithGoogle() {
-    ensureSupabaseConfig()
-
-    return supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: window.location.origin,
-      },
-    })
-  },
-
   async signOut() {
     ensureSupabaseConfig()
 
