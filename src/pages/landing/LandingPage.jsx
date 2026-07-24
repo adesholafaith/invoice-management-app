@@ -23,6 +23,7 @@ import {
   FiX,
 } from 'react-icons/fi'
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok } from 'react-icons/fa'
+import { BrandLogo } from '../../components/ui/BrandLogo'
 
 const features = [
   {
@@ -362,8 +363,13 @@ export function LandingPage() {
           aria-label="Public navigation"
           className="mx-auto grid max-w-7xl grid-cols-[auto_1fr] items-center gap-4 px-4 py-4 sm:px-6 lg:px-8"
         >
-          <Link className="text-xl font-bold" to="/">
-            Billing
+          <Link className="inline-flex items-center" aria-label="Billing home" to="/">
+            <BrandLogo
+              className="inline-flex size-11 items-center justify-center rounded-full bg-[#0B0F17]"
+              iconClassName="size-11"
+              textClassName="!text-[17px] !text-[#0B0F17]"
+              variant="white"
+            />
           </Link>
           <div className="flex items-center justify-end gap-3">
             <button
@@ -499,8 +505,13 @@ export function LandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-start">
             <div>
-              <Link className="text-xl font-bold text-slate-950 dark:text-white" to="/">
-                Billing
+              <Link className="inline-flex items-center" aria-label="Billing home" to="/">
+                <BrandLogo
+                  className="inline-flex size-10 items-center justify-center rounded-full bg-[#0B0F17]"
+                  iconClassName="size-10"
+                  textClassName="!text-[17px] !text-[#0B0F17]"
+                  variant="white"
+                />
               </Link>
               <p className="mt-3 max-w-sm leading-6">
                 Invoice management for clients, line items, PDF exports, payments, and revenue
@@ -630,8 +641,13 @@ function HomeMenu({ isOpen, onClose }) {
         role="dialog"
       >
         <div className="flex items-center justify-between gap-4">
-          <Link className="text-xl font-bold text-slate-950 dark:text-white" onClick={onClose} to="/">
-            Billing
+          <Link className="inline-flex items-center" aria-label="Billing home" onClick={onClose} to="/">
+            <BrandLogo
+              className="inline-flex size-10 items-center justify-center rounded-full bg-[#0B0F17]"
+              iconClassName="size-10"
+              textClassName="!text-[17px] !text-[#0B0F17]"
+              variant="white"
+            />
           </Link>
           <button
             aria-label="Close menu"

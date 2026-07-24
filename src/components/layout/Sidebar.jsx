@@ -13,6 +13,7 @@ import {
   FiX,
 } from 'react-icons/fi'
 import { IconButton } from '../ui/IconButton'
+import { BrandLogo } from '../ui/BrandLogo'
 import { cn } from '../../utils/cn'
 import { useAuth } from '../../hooks/useAuth'
 import { authService } from '../../services/authService'
@@ -65,11 +66,17 @@ export function Sidebar({ isOpen = false, onClose, variant = 'desktop' }) {
     >
       <div className="mb-8 flex items-start justify-between gap-3">
         <Link
-          className="font-serif text-lg font-bold text-white hover:text-[#F3EAD4] dark:text-white"
+          className="inline-flex items-center"
           onClick={onClose}
+          aria-label="Billing home"
           to="/"
         >
-          Billing
+          <BrandLogo
+            className="mr-1 inline-flex size-9 items-center justify-center rounded-full bg-white"
+            iconClassName="size-9"
+            textClassName="!text-white"
+            variant="black"
+          />
         </Link>
         {isMobile ? (
           <IconButton

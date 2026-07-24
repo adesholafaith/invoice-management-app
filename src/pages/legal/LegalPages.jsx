@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { BrandLogo } from '../../components/ui/BrandLogo'
 
 const privacySections = [
   {
@@ -50,8 +51,8 @@ function LegalPage({ eyebrow, sections, title }) {
   return (
     <main className="min-h-screen bg-[var(--paper)] px-4 py-10 text-[var(--text)] sm:px-6 lg:px-10">
       <section className="mx-auto max-w-3xl rounded-lg border border-[var(--paper-line)] bg-white p-6 sm:p-8">
-        <Link className="text-sm font-semibold text-[var(--ink)] hover:text-[var(--gold)]" to="/">
-          Billing
+        <Link className="inline-flex items-center" aria-label="Billing home" to="/">
+          <BrandLogo iconClassName="size-10" variant="black" />
         </Link>
         <p className="mt-8 text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">
           {eyebrow}
