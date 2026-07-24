@@ -280,6 +280,8 @@ const footerLinks = [
       { label: 'Pricing', href: '#pricing' },
       { label: 'Contact', href: '#contact' },
       { label: 'FAQ', href: '#faq' },
+      { label: 'Privacy Policy', to: '/privacy' },
+      { label: 'Terms of Service', to: '/terms' },
     ],
   },
   {
