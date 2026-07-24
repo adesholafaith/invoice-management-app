@@ -1,8 +1,13 @@
-import { isSupabaseConfigured, supabase } from '../config/supabaseClients'
+import { isSupabaseConfigured, supabase, supabaseConfigStatus } from '../config/supabaseClients'
 
 function ensureSupabaseConfig() {
   if (!isSupabaseConfigured) {
-    throw new Error('Supabase is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your .env file.')
+    const missingValues = [
+      !supabaseConfigStatus.hasUrl ? 'VITE_SUPABASE_URL' : null,
+      !supabaseConfigStatus.hasAnonKey ? 'VITE_SUPABASE_ANON_KEY' : null,
+    ].filter(Boolean)
+
+    throw new Error(`Supabase is not configured. Missing: ${missingValues.join(', ')}.`)
   }
 }
 

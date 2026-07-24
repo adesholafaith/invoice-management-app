@@ -106,9 +106,11 @@ export function LoginPage() {
         })}
         type="password"
       />
-      <Button disabled={isSubmitting} type="submit">
-        {isSubmitting ? 'Logging in...' : 'Log in'}
-      </Button>
+      <div className="grid w-full place-items-center">
+        <Button className="min-w-24" disabled={isSubmitting} type="submit">
+          {isSubmitting ? 'Logging in...' : 'Log in'}
+        </Button>
+      </div>
       <p className="text-center text-sm text-slate-500 dark:text-slate-400">
         New here?{' '}
         <Link className="font-medium text-brand-600 dark:text-blue-300" to="/auth/sign-up">
