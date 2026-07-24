@@ -34,7 +34,7 @@ export function SignUpPage() {
       }
 
       toast.success('Account created. Check your email if confirmation is enabled.')
-      navigate('/', { replace: true })
+      navigate('/dashboard', { replace: true })
     } catch (error) {
       setAuthError(error.message || 'Unable to create your account. Please try again.')
       toast.error(error.message || 'Unable to create your account. Please try again.')

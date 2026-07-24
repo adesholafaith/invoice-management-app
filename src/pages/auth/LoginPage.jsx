@@ -33,7 +33,7 @@ export function LoginPage() {
       }
 
       toast.success('Welcome back.')
-      navigate('/', { replace: true })
+      navigate('/dashboard', { replace: true })
     } catch (error) {
       setAuthError(error.message || 'Unable to log in. Please try again.')
       toast.error(error.message || 'Unable to log in. Please try again.')
