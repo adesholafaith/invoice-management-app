@@ -395,7 +395,7 @@ export function LandingPage() {
       <section id="invoice" className="mx-auto grid max-w-7xl scroll-mt-16 gap-8 px-4 pb-4 pt-24 sm:px-6 sm:pb-8 sm:pt-28 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-center lg:px-8 lg:pb-10 lg:pt-32">
         <div className="min-w-0 flex flex-col justify-center">
           <p className="text-sm font-medium uppercase tracking-wide text-blue-700 dark:text-blue-300">
-            Built for businesses and freelancers
+            Billing invoice management
           </p>
           <h1 className="mt-6 max-w-3xl font-serif text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
             <span className="block">Invoice Smarter.</span>
@@ -404,8 +404,8 @@ export function LandingPage() {
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-1xl leading-8 text-slate-600 dark:text-slate-300">
-            Create invoices, manage clients, track payment, export PDFs and grow your business
-             from a simple workspace designed for everyday billing.
+            Billing helps freelancers, consultants and small businesses create invoices, manage
+            clients, track payments, export PDFs and grow from one simple billing workspace.
           </p>
           <div className="mt-8 flex flex-row gap-2 sm:gap-3">
             <Link
