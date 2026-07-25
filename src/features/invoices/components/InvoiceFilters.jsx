@@ -4,15 +4,15 @@ import { Button } from '../../../components/ui/Button'
 export function InvoiceFilters({ customers, filters, onReset, onUpdate }) {
   return (
     <section className="rounded-lg border border-[var(--paper-line)] bg-white p-4">
-      <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-[1fr_160px_200px_180px_auto]">
-        <label className="relative md:col-span-2 lg:col-span-1">
+      <div className="grid min-w-0 gap-3 md:grid-cols-2 lg:grid-cols-[1fr_160px_200px_180px_auto]">
+        <label className="relative min-w-0 md:col-span-2 lg:col-span-1">
           <span className="sr-only">Search invoices and clients</span>
           <FiSearch
             aria-hidden="true"
             className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400"
           />
           <input
-            className="min-h-10 w-full rounded-md border border-[var(--paper-line)] bg-white pl-9 pr-3 text-sm text-[var(--text)] outline-none transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)]"
+            className="block min-h-10 min-w-0 max-w-full w-full rounded-md border border-[var(--paper-line)] bg-white pl-9 pr-3 text-sm text-[var(--text)] outline-none transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)]"
             onChange={(event) => onUpdate('query', event.target.value)}
             placeholder="Search invoices / clients..."
             type="search"
@@ -62,10 +62,10 @@ export function InvoiceFilters({ customers, filters, onReset, onUpdate }) {
 
 function FilterInput({ label, onChange, type = 'text', value }) {
   return (
-    <label>
+    <label className="block min-w-0">
       <span className="sr-only">{label}</span>
       <input
-        className="min-h-10 w-full rounded-md border border-[var(--paper-line)] bg-white px-3 text-sm text-[var(--text)] outline-none placeholder:text-[var(--text)] transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)]"
+        className="block min-h-10 min-w-0 max-w-full w-full rounded-md border border-[var(--paper-line)] bg-white px-3 text-sm text-[var(--text)] outline-none placeholder:text-[var(--text)] transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)]"
         onBlur={(event) => {
           if (!event.target.value && type === 'date') {
             event.target.type = 'text'
@@ -87,10 +87,10 @@ function FilterInput({ label, onChange, type = 'text', value }) {
 
 function FilterSelect({ children, label, onChange, value }) {
   return (
-    <label>
+    <label className="block min-w-0">
       <span className="sr-only">{label}</span>
       <select
-        className="min-h-10 w-full rounded-md border border-[var(--paper-line)] bg-white px-3 text-sm text-[var(--text)] outline-none transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)]"
+        className="block min-h-10 min-w-0 max-w-full w-full rounded-md border border-[var(--paper-line)] bg-white px-3.5 py-2 pr-9 text-sm text-[var(--text)] outline-none transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)]"
         onChange={(event) => onChange(event.target.value)}
         value={value}
       >

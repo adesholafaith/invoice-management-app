@@ -150,13 +150,6 @@ export function HelpPage() {
             </a>
           </div>
 
-          <div className="rounded-lg border border-[var(--paper-line)] bg-white p-5">
-            <h3 className="text-lg font-semibold text-slate-950">Support hours</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
-              Monday to Friday, 9:00 AM to 5:00 PM WAT. Typical response time is within one
-              business day.
-            </p>
-          </div>
         </aside>
       </section>
     </div>
