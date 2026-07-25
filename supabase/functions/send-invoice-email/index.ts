@@ -137,7 +137,7 @@ Deno.serve(async (request) => {
     body: JSON.stringify({
       from: fromEmail,
       html: buildInvoiceEmail(invoice, profile),
-      subject: `Invoice ${invoice.invoice_number} from ${profile?.company_name || 'Ledgerly'}`,
+      subject: `Invoice ${invoice.invoice_number} from ${profile?.company_name || 'Billing'}`,
       to: invoice.customers.email,
     }),
     headers: {

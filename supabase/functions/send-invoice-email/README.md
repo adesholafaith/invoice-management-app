@@ -6,7 +6,7 @@ Required Supabase secrets:
 
 ```bash
 supabase secrets set RESEND_API_KEY=re_xxxxx
-supabase secrets set FROM_EMAIL="Ledgerly <invoices@yourdomain.com>"
+supabase secrets set FROM_EMAIL="Billing <invoices@yourdomain.com>"
 supabase secrets set APP_URL=https://your-deployed-app.com
 ```
 

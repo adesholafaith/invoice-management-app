@@ -22,7 +22,7 @@ Deno.serve(async (request) => {
   }
 
   if (!supabaseUrl || !supabaseAnonKey || !serviceRoleKey || !geminiApiKey) {
-    return jsonResponse({ error: 'Ledgerly Assistant is not configured yet.' }, 500)
+    return jsonResponse({ error: 'Billing Assistant is not configured yet.' }, 500)
   }
 
   const authHeader = request.headers.get('Authorization')
@@ -89,7 +89,7 @@ Deno.serve(async (request) => {
   const reply = extractGeminiText(payload)
 
   if (!reply) {
-    return jsonResponse({ error: 'Ledgerly Assistant could not generate a reply.' }, 500)
+    return jsonResponse({ error: 'Billing Assistant could not generate a reply.' }, 500)
   }
 
   return jsonResponse({ reply })
@@ -138,16 +138,16 @@ function buildGeminiInput(messages: ChatMessage[]) {
 
 function buildSystemPrompt(context: Record<string, unknown>) {
   return `
-You are Ledgerly Assistant, the in-app support assistant for Ledgerly, a SaaS invoice management product.
+You are Billing Assistant, the in-app support assistant for Billing, a SaaS invoice management product.
 
-Help users with Ledgerly workflows: creating invoices, customers, payment terms, statuses, PDF export, printing, invoice email sending, receipts, billing, subscriptions, dashboard metrics, and account setup.
+Help users with Billing workflows: creating invoices, clients, payment terms, statuses, PDF export, printing, invoice email sending, receipts, billing, subscriptions, dashboard metrics, and account setup.
 
 Rules:
 - Be concise, calm, and practical.
 - Give step-by-step instructions when useful.
 - If a feature requires a paid plan, say so clearly without sounding pushy.
 - Do not invent tax, legal, accounting, or payment advice. Recommend checking with a qualified professional when needed.
-- If the user asks for something outside Ledgerly, answer briefly only if it helps them use the product.
+- If the user asks for something outside Billing, answer briefly only if it helps them use the product.
 - Never ask for secret keys, passwords, card details, or sensitive credentials.
 - Use the user's context below only to personalize helpful product guidance.
 
@@ -238,7 +238,7 @@ function normalizeGeminiError(payload: Record<string, unknown>) {
     message.includes('rate limit')
   ) {
     return {
-      message: 'Ledgerly Assistant has reached its free AI limit for now. Please try again later.',
+      message: 'Billing Assistant has reached its free AI limit for now. Please try again later.',
       status: 503,
     }
   }
@@ -250,13 +250,13 @@ function normalizeGeminiError(payload: Record<string, unknown>) {
     message.includes('api key')
   ) {
     return {
-      message: 'Ledgerly Assistant is not configured correctly yet.',
+      message: 'Billing Assistant is not configured correctly yet.',
       status: 503,
     }
   }
 
   return {
-    message: 'Ledgerly Assistant is unavailable right now. Please try again shortly.',
+    message: 'Billing Assistant is unavailable right now. Please try again shortly.',
     status: 503,
   }
 }
