@@ -94,7 +94,11 @@ export function AiChatBot() {
                 }`}
                 key={`${message.from}-${index}-${message.text}`}
               >
-                {message.text}
+                {message.from === 'assistant' ? (
+                  <FormattedAssistantMessage text={message.text} />
+                ) : (
+                  message.text
+                )}
               </div>
             ))}
             {isSending ? (
@@ -145,6 +149,71 @@ export function AiChatBot() {
       </button>
     </>
   )
+}
+
+function FormattedAssistantMessage({ text }) {
+  const blocks = normalizeAssistantText(text).split('\n').filter(Boolean)
+
+  return (
+    <div className="space-y-2">
+      {blocks.map((block, index) => {
+        const numberedMatch = block.match(/^(\d+)\.\s+(.+)$/)
+
+        if (numberedMatch) {
+          return (
+            <p className="flex gap-2" key={`${block}-${index}`}>
+              <span className="font-mono text-xs font-semibold text-[var(--mist)]">
+                {numberedMatch[1]}.
+              </span>
+              <span>{renderInlineFormatting(numberedMatch[2])}</span>
+            </p>
+          )
+        }
+
+        const bulletMatch = block.match(/^[-•]\s+(.+)$/)
+
+        if (bulletMatch) {
+          return (
+            <p className="flex gap-2" key={`${block}-${index}`}>
+              <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#0B0F17]" />
+              <span>{renderInlineFormatting(bulletMatch[1])}</span>
+            </p>
+          )
+        }
+
+        return <p key={`${block}-${index}`}>{renderInlineFormatting(block)}</p>
+      })}
+    </div>
+  )
+}
+
+function normalizeAssistantText(text) {
+  return String(text || '')
+    .replace(/\\([*_`])/g, '$1')
+    .replace(/\*{4}([^*\n]+?)\*{4}/g, '**$1**')
+    .replace(/\*\*([^*\n]+?):\*{4}/g, '**$1:**')
+    .replace(/\*{3,}/g, '**')
+    .replace(/\s+(\d+\.\s+)/g, '\n$1')
+    .replace(/\s+[-•]\s+/g, '\n- ')
+    .replace(/[ \t]+/g, ' ')
+    .trim()
+}
+
+function renderInlineFormatting(text) {
+  const cleanText = String(text || '').replace(/\*\*+/g, '**')
+  const parts = cleanText.split(/(\*\*[^*]+\*\*)/g).filter(Boolean)
+
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
+      return (
+        <strong className="font-semibold text-[var(--text)]" key={`${part}-${index}`}>
+          {part.slice(2, -2)}
+        </strong>
+      )
+    }
+
+    return part.replace(/\*\*/g, '')
+  })
 }
 
 function getUnavailableMessage(message = '') {
