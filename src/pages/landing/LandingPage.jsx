@@ -1363,7 +1363,7 @@ function TestimonialsSection() {
       className="scroll-mt-16 bg-white py-10 dark:bg-slate-950 sm:py-16"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">
+        <p className="text-center text-sm font-semibold uppercase tracking-wide text-blue-70 dark:text-blue-300">
           Testimonials
         </p>
         <h2 className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold sm:text-3xl">
@@ -1469,7 +1469,7 @@ function TestimonialsCarousel() {
   return (
     <div
       aria-label="Client testimonials"
-      className="mt-10 flex cursor-grab gap-5 overflow-x-auto overscroll-x-contain pb-4 active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      className="mt-10 flex cursor-grab gap-5 overflow-x-auto overscroll-x-contain active:cursor-grabbing [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       onBlur={handleBlur}
       onFocus={() => setIsPaused(true)}
       onMouseEnter={() => setIsPaused(true)}
@@ -1488,7 +1488,7 @@ function TestimonialsCarousel() {
 
         return (
           <article
-            className="flex min-h-[320px] w-[min(84vw,360px)] shrink-0 flex-col bg-[#0B0F17] p-6 text-white shadow-[0_20px_60px_rgba(11,15,23,0.24)] transition duration-300 hover:-translate-y-1"
+            className="flex min-h-[320px] w-[min(84vw,360px)] shrink-0 flex-col bg-[#0B0F17] p-6 text-white transition duration-300 hover:-translate-y-1"
             key={testimonial.name}
           >
             <p className="text-sm font-semibold tracking-wide text-amber-400" aria-label="5 out of 5 stars">

@@ -13,7 +13,7 @@ export function AppLayout() {
   }, [pathname, search])
 
   return (
-    <div className="min-h-screen bg-[var(--paper)] text-[var(--text)] dark:bg-slate-950 dark:text-slate-50">
+    <div className="min-h-screen bg-[var(--paper)] text-[var(--text)] [--paper:#F4F8FF] [--paper-dim:#EAF2FF] [--paper-line:#D8E5F6] dark:bg-slate-950 dark:text-slate-50">
       <Sidebar />
       <Sidebar isOpen={isMobileNavOpen} onClose={() => setIsMobileNavOpen(false)} variant="mobile" />
       <div className="flex min-h-screen flex-col lg:pl-72">

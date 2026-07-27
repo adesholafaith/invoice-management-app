@@ -139,6 +139,28 @@ textarea::placeholder {
   color: var(--mist);
 }
 
+input[type="date"],
+.date-field {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="date"]::-webkit-date-and-time-value,
+.date-field::-webkit-date-and-time-value {
+  min-width: 0;
+  max-width: 100%;
+  text-align: left;
+}
+
+input[type="date"]::-webkit-datetime-edit,
+.date-field::-webkit-datetime-edit {
+  min-width: 0;
+  padding: 0;
+}
+
 a,
 button,
 input,
@@ -214,6 +236,22 @@ html.dark body {
   100% {
     background-position: 0% 50%;
   }
+}
+
+@keyframes workspace-search-slide {
+  from {
+    opacity: 0;
+    transform: scaleX(0.18);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.animate-workspace-search-slide {
+  animation: workspace-search-slide 180ms ease-out both;
 }
 
 .btn-premium-gradient {

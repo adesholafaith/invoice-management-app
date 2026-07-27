@@ -65,7 +65,7 @@ export function Sidebar({ isOpen = false, onClose, variant = 'desktop' }) {
       className={cn(
         'fixed inset-y-0 z-40 flex h-dvh max-h-dvh w-[min(18rem,calc(100vw-2rem))] flex-col overflow-hidden bg-[var(--ink)] px-4 py-5 text-white dark:bg-slate-950',
         isMobile
-          ? 'right-0 border-l border-white/10 dark:border-slate-800'
+          ? 'left-0 border-r border-white/10 dark:border-slate-800'
           : 'left-0 border-r border-white/10 dark:border-slate-800',
         !isMobile && 'hidden lg:flex',
       )}

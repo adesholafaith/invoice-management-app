@@ -91,9 +91,11 @@ export function SignUpPage() {
         })}
         type="password"
       />
-      <Button disabled={isSubmitting} type="submit">
-        {isSubmitting ? 'Creating account...' : 'Create account'}
-      </Button>
+      <div className="grid w-full place-items-center">
+        <Button className="min-w-32" disabled={isSubmitting} type="submit">
+          {isSubmitting ? 'Creating account...' : 'Create account'}
+        </Button>
+      </div>
       <p className="text-center text-sm text-slate-500 dark:text-slate-400">
         Already have an account?{' '}
         <Link className="font-medium text-brand-600 dark:text-blue-300" to="/auth/login">

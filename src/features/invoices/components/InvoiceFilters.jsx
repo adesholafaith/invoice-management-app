@@ -61,24 +61,22 @@ export function InvoiceFilters({ customers, filters, onReset, onUpdate }) {
 }
 
 function FilterInput({ label, onChange, type = 'text', value }) {
+  const isDate = type === 'date'
+
   return (
-    <label className="block min-w-0">
+    <label className="relative block min-w-0">
       <span className="sr-only">{label}</span>
+      {isDate && !value ? (
+        <span className="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 text-sm text-[var(--text)]">
+          Date
+        </span>
+      ) : null}
       <input
-        className="block min-h-10 min-w-0 max-w-full w-full rounded-md border border-[var(--paper-line)] bg-white px-3 text-sm text-[var(--text)] outline-none placeholder:text-[var(--text)] transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)]"
-        onBlur={(event) => {
-          if (!event.target.value && type === 'date') {
-            event.target.type = 'text'
-          }
-        }}
+        className={`date-field block min-h-10 min-w-0 max-w-full w-full rounded-md border border-[var(--paper-line)] bg-white px-3 text-sm outline-none transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)] ${
+          isDate && !value ? 'text-transparent' : 'text-[var(--text)]'
+        }`}
         onChange={(event) => onChange(event.target.value)}
-        onFocus={(event) => {
-          if (type === 'date') {
-            event.target.type = 'date'
-          }
-        }}
-        placeholder={type === 'date' ? 'Date' : undefined}
-        type={type === 'date' && !value ? 'text' : type}
+        type={type}
         value={value}
       />
     </label>

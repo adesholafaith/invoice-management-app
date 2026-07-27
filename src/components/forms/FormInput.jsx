@@ -20,6 +20,7 @@ export function FormInput({
         aria-invalid={Boolean(error)}
         className={cn(
           'mt-1.5 block min-w-0 max-w-full w-full rounded-md border bg-white px-3.5 py-2.5 text-sm text-[var(--text)] shadow-none outline-none transition duration-200 read-only:bg-[var(--paper-dim)] focus:ring-4',
+          type === 'date' && 'date-field',
           error
             ? 'border-[var(--rust)] focus:border-[var(--rust)] focus:ring-[rgba(181,72,47,0.15)]'
             : 'border-[var(--paper-line)] hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-[rgba(20,24,31,0.10)]',
