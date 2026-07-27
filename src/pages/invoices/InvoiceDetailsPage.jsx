@@ -211,12 +211,12 @@ export function InvoiceDetailsPage() {
         </div>
 
         {invoice ? (
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-end xl:flex-nowrap">
+          <div className="flex w-full min-w-0 flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-end xl:flex-nowrap">
             <label className="sr-only" htmlFor="invoice-status">
               Change invoice status
             </label>
             <select
-              className="min-h-10 rounded-md border border-[var(--paper-line)] bg-white px-3 text-sm text-[var(--text)] outline-none transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)] disabled:opacity-60"
+              className="h-10 w-full min-w-0 rounded-md border border-[var(--paper-line)] bg-white px-3 pr-9 text-sm text-[var(--text)] outline-none transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)] disabled:opacity-60 sm:w-auto"
               disabled={isStatusSaving}
               id="invoice-status"
               onChange={handleStatusChange}
@@ -316,7 +316,7 @@ export function InvoiceDetailsPage() {
 function MenuButton({ children, className = '', disabled, onClick }) {
   return (
     <button
-      className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium text-[var(--text)] hover:bg-[var(--paper-dim)] disabled:opacity-60 ${className}`}
+      className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-xs font-medium text-[var(--text)] hover:bg-[var(--paper-dim)] disabled:opacity-60 ${className}`}
       disabled={disabled}
       onClick={onClick}
       type="button"

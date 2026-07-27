@@ -17,7 +17,7 @@ export function InvoiceItemsFieldArray({ control, currency = 'USD', errors, regi
   })
 
   return (
-    <section className="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+    <section className="min-w-0 rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900 sm:p-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h3 className="text-base font-semibold">Line items</h3>
@@ -38,7 +38,7 @@ export function InvoiceItemsFieldArray({ control, currency = 'USD', errors, regi
 
           return (
             <div
-              className="grid gap-3 rounded-lg border border-slate-200 p-4 dark:border-slate-800 md:grid-cols-2 xl:grid-cols-[minmax(0,1.6fr)_minmax(110px,0.6fr)_minmax(130px,0.8fr)_minmax(130px,0.8fr)]"
+              className="grid min-w-0 gap-3 rounded-lg border border-slate-200 p-3 dark:border-slate-800 sm:p-4 md:grid-cols-2 xl:grid-cols-[minmax(0,1.6fr)_minmax(110px,0.6fr)_minmax(130px,0.8fr)_minmax(130px,0.8fr)]"
               key={field.id}
             >
               <ItemField
@@ -93,7 +93,7 @@ export function InvoiceItemsFieldArray({ control, currency = 'USD', errors, regi
               </ItemField>
               <div>
                 <p className="text-sm font-medium text-slate-800 dark:text-slate-100">Total</p>
-                <p className="mt-1 flex min-h-10 items-center rounded-md bg-slate-50 px-3 text-sm font-semibold dark:bg-slate-950">
+                <p className="mt-1 flex min-h-10 min-w-0 items-center rounded-md bg-slate-50 px-3 text-sm font-semibold dark:bg-slate-950">
                   {formatCurrency(lineTotal, currency)}
                 </p>
               </div>
@@ -107,7 +107,7 @@ export function InvoiceItemsFieldArray({ control, currency = 'USD', errors, regi
 
 function ItemField({ children, error, id, label }) {
   return (
-    <div>
+    <div className="min-w-0">
       <label className="text-sm font-medium text-[var(--text)]" htmlFor={id}>
         {label}
       </label>
@@ -119,7 +119,7 @@ function ItemField({ children, error, id, label }) {
 
 function itemInputClass(error) {
   return [
-    'mt-1 min-h-10 w-full rounded-md border bg-white px-3 text-sm text-[var(--text)] outline-none transition focus:ring-4',
+    'mt-1 block h-10 min-w-0 max-w-full w-full rounded-md border bg-white px-3 text-sm text-[var(--text)] outline-none transition focus:ring-4',
     error
       ? 'border-[var(--rust)] focus:border-[var(--rust)] focus:ring-[rgba(181,72,47,0.15)]'
       : 'border-[var(--paper-line)] hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-[rgba(20,24,31,0.10)]',

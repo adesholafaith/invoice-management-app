@@ -88,7 +88,7 @@ function FilterSelect({ children, label, onChange, value }) {
     <label className="block min-w-0">
       <span className="sr-only">{label}</span>
       <select
-        className="block min-h-10 min-w-0 max-w-full w-full rounded-md border border-[var(--paper-line)] bg-white px-3.5 py-2 pr-9 text-sm text-[var(--text)] outline-none transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)]"
+        className="block h-10 min-w-0 max-w-full w-full rounded-md border border-[var(--paper-line)] bg-white px-3.5 pr-9 text-sm text-[var(--text)] outline-none transition hover:border-[var(--mist)] focus:border-[var(--ink)] focus:ring-4 focus:ring-[rgba(20,24,31,0.10)]"
         onChange={(event) => onChange(event.target.value)}
         value={value}
       >

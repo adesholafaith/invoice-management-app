@@ -18,8 +18,8 @@ export function InvoiceDetails({ invoice, profile }) {
   const activity = buildActivity(invoice)
 
   return (
-    <div className="grid gap-6 print:block xl:grid-cols-[1fr_340px]">
-      <section className="rounded-lg border border-[var(--paper-line)] bg-white p-6">
+    <div className="grid min-w-0 gap-6 print:block xl:grid-cols-[minmax(0,1fr)_340px]">
+      <section className="min-w-0 overflow-hidden rounded-lg border border-[var(--paper-line)] bg-white p-4 sm:p-6">
         <div className="flex flex-col gap-4 border-b border-[var(--paper-line)] pb-6 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="text-sm text-[var(--mist)]">Invoice</p>
@@ -28,14 +28,14 @@ export function InvoiceDetails({ invoice, profile }) {
           <InvoiceStatusBadge status={invoice.status} />
         </div>
 
-        <div className="grid gap-4 py-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid min-w-0 gap-4 py-6 sm:grid-cols-2 lg:grid-cols-4">
           <MetricCard label="Invoice Number" value={invoice.invoice_number} />
           <MetricCard label="Status" value={<InvoiceStatusBadge status={invoice.status} />} />
           <MetricCard label="Amount Due" value={formatCurrency(invoice.total, currency)} />
           <MetricCard label="Payment Terms" value={formatPaymentTerms(invoice.payment_terms)} />
         </div>
 
-        <div className="grid gap-6 pb-6 sm:grid-cols-2">
+        <div className="grid min-w-0 gap-6 pb-6 sm:grid-cols-2">
           <InfoBlock title="From" lines={companyLines} />
           <InfoBlock
             title="Bill to"
@@ -56,8 +56,8 @@ export function InvoiceDetails({ invoice, profile }) {
           />
         </div>
 
-        <div className="overflow-hidden rounded-lg border border-[var(--paper-line)]">
-          <table className="min-w-full divide-y divide-[var(--paper-line)]">
+        <div className="overflow-x-auto rounded-lg border border-[var(--paper-line)]">
+          <table className="min-w-[560px] divide-y divide-[var(--paper-line)] sm:min-w-full">
             <thead className="bg-[var(--paper-dim)]">
               <tr>
                 <TableHead>Description</TableHead>
@@ -95,8 +95,8 @@ export function InvoiceDetails({ invoice, profile }) {
         ) : null}
       </section>
 
-      <aside className="space-y-4 print:mt-6 xl:sticky xl:top-24 xl:self-start">
-        <section className="rounded-lg border border-[var(--paper-line)] bg-white p-5">
+      <aside className="min-w-0 space-y-4 print:mt-6 xl:sticky xl:top-24 xl:self-start">
+        <section className="min-w-0 overflow-hidden rounded-lg border border-[var(--paper-line)] bg-white p-4 sm:p-5">
           <h3 className="text-base font-semibold">Invoice Snapshot</h3>
           <div className="mt-4 space-y-3 text-sm">
             <SummaryRow label="Invoice Number" value={invoice.invoice_number} />
@@ -108,7 +108,7 @@ export function InvoiceDetails({ invoice, profile }) {
           </div>
         </section>
 
-        <section className="rounded-lg border border-[var(--paper-line)] bg-white p-5">
+        <section className="min-w-0 overflow-hidden rounded-lg border border-[var(--paper-line)] bg-white p-4 sm:p-5">
           <h3 className="text-base font-semibold">Summary</h3>
           <div className="mt-4 space-y-3 text-sm">
             <SummaryRow label="Subtotal" value={formatCurrency(invoice.subtotal, currency)} />
@@ -116,7 +116,7 @@ export function InvoiceDetails({ invoice, profile }) {
             <SummaryRow label="Discount" value={formatCurrency(-invoice.discount, currency)} />
             <div className="border-t border-[var(--paper-line)] pt-4">
               <p className="text-sm font-medium text-[var(--mist)]">Grand Total</p>
-              <p className="mt-2 text-3xl font-bold text-[var(--text)]">
+              <p className="mt-2 break-words text-2xl font-bold text-[var(--text)] sm:text-3xl">
                 {formatCurrency(invoice.total, currency)}
               </p>
             </div>
@@ -124,7 +124,7 @@ export function InvoiceDetails({ invoice, profile }) {
         </section>
 
         {invoice.status === 'paid' ? (
-          <section className="rounded-lg border border-[var(--paper-line)] bg-white p-5">
+          <section className="min-w-0 overflow-hidden rounded-lg border border-[var(--paper-line)] bg-white p-4 sm:p-5">
             <h3 className="text-base font-semibold">Payment</h3>
             <div className="mt-4 space-y-3 text-sm">
               <SummaryRow label="Receipt" value={latestPayment?.receipt_number || 'Pending receipt'} />
@@ -139,15 +139,15 @@ export function InvoiceDetails({ invoice, profile }) {
           </section>
         ) : null}
 
-        <section className="rounded-lg border border-[var(--paper-line)] bg-white p-5">
+        <section className="min-w-0 overflow-hidden rounded-lg border border-[var(--paper-line)] bg-white p-4 sm:p-5">
           <h3 className="text-base font-semibold">Activity</h3>
           <div className="mt-4 space-y-4">
             {activity.map((item) => (
-              <div className="flex gap-3" key={item.label}>
+              <div className="flex min-w-0 gap-3" key={item.label}>
                 <span className="mt-1 size-2 rounded-full bg-[var(--ink)]" />
-                <div>
-                  <p className="text-sm font-medium">{item.label}</p>
-                  <p className="mt-1 text-xs text-[var(--mist)]">{item.time}</p>
+                <div className="min-w-0">
+                  <p className="break-words text-sm font-medium">{item.label}</p>
+                  <p className="mt-1 break-words text-xs text-[var(--mist)]">{item.time}</p>
                 </div>
               </div>
             ))}
@@ -203,20 +203,20 @@ function formatDateTime(value) {
 
 function MetricCard({ label, value }) {
   return (
-    <article className="rounded-lg border border-[var(--paper-line)] bg-[var(--paper-dim)] p-4">
+    <article className="min-w-0 rounded-lg border border-[var(--paper-line)] bg-[var(--paper-dim)] p-4">
       <p className="text-xs font-semibold uppercase text-[var(--mist)]">{label}</p>
-      <div className="mt-2 text-sm font-semibold text-[var(--text)]">{value}</div>
+      <div className="mt-2 min-w-0 break-words text-sm font-semibold text-[var(--text)]">{value}</div>
     </article>
   )
 }
 
 function InfoBlock({ lines, title }) {
   return (
-    <div>
+    <div className="min-w-0">
       <h3 className="text-sm font-semibold text-[var(--text)]">{title}</h3>
-      <div className="mt-2 space-y-1 text-sm text-[var(--text)]">
+      <div className="mt-2 min-w-0 space-y-1 text-sm text-[var(--text)]">
         {lines.filter(Boolean).map((line) => (
-          <p className="whitespace-pre-line" key={line}>
+          <p className="whitespace-pre-line break-words" key={line}>
             {line}
           </p>
         ))}
@@ -227,9 +227,9 @@ function InfoBlock({ lines, title }) {
 
 function SummaryRow({ label, value, valueClassName = 'font-semibold' }) {
   return (
-    <div className="flex items-center justify-between gap-4">
-      <span className="text-[var(--mist)]">{label}</span>
-      <span className={`${valueClassName} text-right`}>{value}</span>
+    <div className="flex min-w-0 items-start justify-between gap-4">
+      <span className="shrink-0 text-[var(--mist)]">{label}</span>
+      <span className={`${valueClassName} min-w-0 break-words text-right`}>{value}</span>
     </div>
   )
 }

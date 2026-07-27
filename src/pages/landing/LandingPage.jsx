@@ -392,10 +392,10 @@ export function LandingPage() {
         />
       </header>
 
-      <section id="invoice" className="mx-auto grid max-w-7xl scroll-mt-16 gap-8 px-4 pb-4 pt-24 sm:px-6 sm:pb-8 sm:pt-28 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-center lg:px-8 lg:pb-10 lg:pt-32">
-        <div className="min-w-0 flex flex-col justify-center">
+      <section id="invoice" className="mx-auto grid max-w-7xl scroll-mt-16 gap-8 px-4 pb-20 pt-32 sm:px-6 sm:pb-12 sm:pt-36 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-center lg:px-8 lg:pb-10 lg:pt-40">
+        <div className="min-w-0 flex flex-col justify-center py-5">
           <p className="text-sm font-medium uppercase tracking-wide text-blue-700 dark:text-blue-300">
-            Billing invoice management
+            FOR FREELANCERS AND BUSINESSES
           </p>
           <h1 className="mt-6 max-w-3xl font-serif text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
             <span className="block">Invoice Smarter.</span>
@@ -409,15 +409,15 @@ export function LandingPage() {
           </p>
           <div className="mt-8 flex flex-row gap-2 sm:gap-3">
             <Link
-              className="btn-premium-gradient inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-semibold tracking-wide transition duration-300 hover:-translate-y-0.5 active:scale-[0.985] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600 sm:px-5"
-              to="/invoices/new">
-              Create invoice
-            </Link>
-            <Link
               className="btn-gradient-outline inline-flex min-h-9 items-center justify-center rounded-full px-3 text-xs font-semibold tracking-wide !text-[#0B0F17] hover:-translate-y-0.5 hover:!text-[#0B0F17] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600 sm:px-5"
               to="/dashboard"
             >
-              Go to dashboard
+              Get Started
+            </Link>
+            <Link
+              className="btn-premium-gradient inline-flex min-h-9 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-semibold tracking-wide transition duration-300 hover:-translate-y-0.5 active:scale-[0.985] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-600 sm:px-5"
+              to="/invoices/new">
+              Create invoice
             </Link>
           </div>
           <div className="mt-10 grid max-w-xl grid-cols-3 gap-4 pt-6">
@@ -430,7 +430,7 @@ export function LandingPage() {
         <ProductPreview />
       </section>
 
-      <section id="features" className="scroll-mt-0 bg-white pb-10 pt-4 dark:bg-slate-950 sm:pb-14 sm:pt-6">
+      <section id="features" className="scroll-mt-0 bg-white pb-10 pt-6 dark:bg-slate-950 sm:pb-14 sm:pt-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">
             Features
@@ -503,7 +503,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <footer className="border-t border-slate-200 bg-white py-12 text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">
+      <footer className="border-t border-slate-200 bg-white pb-6 pt-12 text-xs text-slate-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-start">
             <div>
@@ -515,7 +515,7 @@ export function LandingPage() {
                   variant="white"
                 />
               </Link>
-              <p className="mt-3 max-w-sm leading-6">
+              <p className="mt-3 max-w-sm text-sm leading-6">
                 Invoice management for clients, line items, PDF exports, payments, and revenue
                 tracking.
               </p>
@@ -524,8 +524,8 @@ export function LandingPage() {
             <div className="grid grid-cols-2 gap-8">
               {footerLinks.map((group) => (
                 <div key={group.title}>
-                  <h3 className="font-semibold text-slate-950 dark:text-white">{group.title}</h3>
-                  <ul className="mt-4 space-y-3">
+                  <h3 className="text-base font-semibold text-slate-950 dark:text-white">{group.title}</h3>
+                  <ul className="mt-3 space-y-2.5 text-sm leading-6">
                     {group.links.map((link) => (
                       <li key={link.label}>
                         {link.to ? (
@@ -545,16 +545,16 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-col gap-4 border-t border-slate-200 pt-6 dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-8 flex items-center justify-between gap-4 border-t border-slate-200 pt-5 dark:border-slate-800">
             <p className="text-xs text-slate-500">Copyright 2026 Billing. All rights reserved.</p>
-            <div className="flex items-center gap-3">
+            <div className="flex shrink-0 items-center gap-2">
               {footerSocials.map((social) => {
                 const Icon = social.icon
 
                 return (
                   <a
                     aria-label={`Billing on ${social.label}`}
-                    className="inline-flex size-9 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 dark:border-slate-800 dark:text-slate-300"
+                    className="inline-flex size-7 items-center justify-center rounded-full border border-slate-200 text-[11px] text-slate-600 transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 dark:border-slate-800 dark:text-slate-300"
                     href={social.href}
                     key={social.label}
                     rel="noreferrer"
@@ -1363,7 +1363,7 @@ function TestimonialsSection() {
       className="scroll-mt-16 bg-white py-10 dark:bg-slate-950 sm:py-16"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-semibold uppercase tracking-wide text-blue-70 dark:text-blue-300">
+        <p className="text-center text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">
           Testimonials
         </p>
         <h2 className="mx-auto mt-3 max-w-2xl text-center text-2xl font-bold sm:text-3xl">

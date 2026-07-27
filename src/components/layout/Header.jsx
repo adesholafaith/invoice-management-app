@@ -145,7 +145,6 @@ export function Header({ onMenuClick }) {
             isLoading={isSearching}
             isOpen={isSearchSuggestionsOpen && searchQuery.trim().length >= 2}
             onClose={closeSearchPanels}
-            query={searchQuery}
             results={searchResults}
           />
         </div>
@@ -182,7 +181,6 @@ export function Header({ onMenuClick }) {
               isLoading={isSearching}
               isOpen={isMobileSearchOpen && isSearchSuggestionsOpen && searchQuery.trim().length >= 2}
               onClose={closeSearchPanels}
-              query={searchQuery}
               results={searchResults}
             />
           </div>
@@ -266,7 +264,7 @@ export function Header({ onMenuClick }) {
   )
 }
 
-function SearchSuggestions({ isLoading, isOpen, onClose, query, results }) {
+function SearchSuggestions({ isLoading, isOpen, onClose, results }) {
   if (!isOpen) return null
 
   return (
@@ -313,11 +311,6 @@ function SearchSuggestions({ isLoading, isOpen, onClose, query, results }) {
           ))}
         </div>
       ) : null}
-
-      <div className="border-t border-[var(--paper-line)] px-3 py-2 text-[11px] text-[var(--mist)]">
-        Press Enter to search invoices for "{query.trim()}"
-      </div>
     </div>
   )
 }
-
