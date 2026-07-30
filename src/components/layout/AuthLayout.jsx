@@ -9,7 +9,7 @@ export function AuthLayout() {
           <Link className="inline-flex items-center" aria-label="Billing home" to="/">
             <BrandLogo iconClassName="size-10" variant="black" />
           </Link>
-          <h1 className="mt-2 text-2xl font-semibold">Manage invoices with confidence</h1>
+          <h1 className="mt-2 text-2lg font-semibold">Manage invoices with confidence</h1>
         </div>
         <Outlet />
       </section>
